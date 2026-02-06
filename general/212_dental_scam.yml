@@ -1,11 +1,11 @@
 name: "212 Dental Scam"
 description: |
-  A rule to detect emails from 212 dental scam domains, targetting employees as a real employee benefit.
+  A rule to detect emails from 212 dental scam domains, targetting corporate employees as a real employee benefit.
 type: "rule"
 severity: "high"
 authors:
   - name: "Ricky Lee"
-  - github: "rickyop"
+  - github: "dabestspoona"
 source: |
   type.inbound
   and (strings.istarts_with(sender.email.domain.root_domain, "212dent") 
