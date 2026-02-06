@@ -5,7 +5,7 @@ type: "rule"
 severity: "high"
 authors:
   - name: "Ricky Lee"
-  - github: "rickyop"
+  - github: "dabestspoona"
 source: |
   type.inbound
   and sender.email.email in $aggressive_sales_spammers
