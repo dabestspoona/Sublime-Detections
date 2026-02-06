@@ -1,12 +1,12 @@
 
 name: "Aggressive .cn tld Spammers"
 description: |
-  A rule to quarantine .cn spammers.
+  A rule to quarantine service.{randomstring}.cn TLD spammers.
 type: "rule"
 severity: "high"
 authors:
   - name: "Ricky Lee"
-  - github: "rickyop"
+  - github: "dabestspoona"
 source: |
   type.inbound
   and (strings.istarts_with(sender.email.domain.subdomain, "service") 
