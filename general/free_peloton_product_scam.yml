@@ -1,0 +1,30 @@
+name: "Free Peloton Product Sympathy Scam"
+description: |
+  A rule to detect emails from elaina rice scam targetting employees for free products.
+type: "rule"
+severity: "high"
+authors:
+  - name: "Ricky Lee"
+  - github: "rickyop"
+source: |
+  type.inbound
+  and (
+    sender.email.email == "elainarice43@gmail.com"
+    or sender.email.email == "elaina.rice@jacks.sdstate.edu"
+  )
+  or
+  type.inbound
+  and any([body.plain.raw, body.current_thread.text],
+        strings.ilike(.,
+                      "*My name is Elaina and I am a 21 year old from South Dakota*",
+                      "*severe anorexia nervosa*"
+        )
+  )
+tags:
+  - "Scam"
+  - "Fraud Language"
+attack_types:
+  - "Callback Phishing"
+  - "BEC/Fraud"
+tactics_and_techniques:
+  - "Social engineering"

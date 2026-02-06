@@ -1,0 +1,35 @@
+name: "212 Dental Scam"
+description: |
+  A rule to detect emails from 212 dental scam domains, targetting employees as a real employee benefit.
+type: "rule"
+severity: "high"
+authors:
+  - name: "Ricky Lee"
+  - github: "rickyop"
+source: |
+  type.inbound
+  and (strings.istarts_with(sender.email.domain.root_domain, "212dent") 
+  or strings.istarts_with(sender.email.domain.root_domain, "212"))
+  and any(ml.nlu_classifier(body.current_thread.text).topics,
+        .name in ("Advertising and Promotions", "Health and Wellness")
+        and .confidence == "high"
+  )
+tags:
+  - "Scam"
+  - "Fraud Language"
+attack_types:
+  - "Callback Phishing"
+  - "BEC/Fraud"
+tactics_and_techniques:
+  - "Social engineering"
+detection_methods:
+  - "Content analysis"
+  - "Natural Language Understanding"
+  - "Sender analysis"
+
+
+
+
+
+
+
